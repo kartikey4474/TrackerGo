@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -14,20 +15,42 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amountController = TextEditingController();
 
+  DateTime _selectedDate = DateTime.now();
+
   void submitData() {
+    if (amountController.text.isEmpty) {
+      return;
+    }
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
 
     widget.addTx(
       enteredTitle,
       enteredAmount,
+      _selectedDate,
     );
 
     Navigator.of(context).pop();
+  }
+
+  void _datePicker() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2019),
+            lastDate: DateTime.now())
+        .then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -49,15 +72,31 @@ class _NewTransactionState extends State<NewTransaction> {
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
             ),
-             Row(children: <Widget>[
-               Text('no date chosen')
-             ],)
-
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Text(
+                    _selectedDate == null
+                        ? 'no date chosen'
+                        : DateFormat.yMd().format(_selectedDate),
+                  ),
+                  FlatButton(
+                    onPressed: _datePicker,
+                    child: Text(
+                      'choose date',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    textColor: Theme.of(context).primaryColor,
+                  ),
+                ],
+              ),
+            ),
             FlatButton(
               child: Text('Add transaction'),
               onPressed: submitData,
               color: Theme.of(context).primaryColor,
-            )
+            ),
           ],
         ),
       ),
