@@ -33,6 +33,10 @@ flutter doctor
 ```bash
 flutter run
 ```
+5. Join Discord
+```bash
+https://discord.gg/3kCvhF92
+```
 ## Contributing
 
 Contribution to the project can be made if you have some improvements for the project or if you find some bugs.
