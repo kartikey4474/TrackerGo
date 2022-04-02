@@ -1,4 +1,5 @@
-# TrackerGo
+<p align="center"><img src="SUCCESS (1).png" alt="logo" width="150" height="150"></p> <h1 align="center"> TrackerGo</h1>
+
  <h2 align = "center"> ◀️ Introduction ▶️ </h2>
 
 <p align="center"> TrackerGo makes managing personal finances as easy as pie! Now easily record your personal and business financial transactions, generate spending reports, review your daily, weekly and monthly financial data and manage your assets with TrackerGo's spending tracker and budget planner.</p>
