@@ -48,6 +48,7 @@ class TransactionList extends StatelessWidget {
                     ),
                   ],
                 ),
+                Spacer(),
                 Container(
                   child: IconButton(
                     onPressed: () => deletetx(transactions[index].id),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Widgets/drawer.dart';
 import 'package:flutter_application_1/Widgets/transaction_list.dart';
 import './Widgets/transaction_list.dart';
 import 'Widgets/chart.dart';
@@ -89,6 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      drawer: CustomDrawer(),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
