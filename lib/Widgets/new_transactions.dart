@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -85,9 +86,10 @@ class _NewTransactionState extends State<NewTransaction> {
                     onPressed: _datePicker,
                     child: Text(
                       'choose date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Get.theme.primaryColor),
                     ),
-                    textColor: Theme.of(context).primaryColor,
                   ),
                 ],
               ),
@@ -95,7 +97,7 @@ class _NewTransactionState extends State<NewTransaction> {
             FlatButton(
               child: Text('Add transaction'),
               onPressed: submitData,
-              color: Theme.of(context).primaryColor,
+              color: Get.theme.accentColor,
             ),
           ],
         ),

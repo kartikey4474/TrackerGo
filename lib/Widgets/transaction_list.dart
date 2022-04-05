@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 
@@ -19,15 +20,18 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   decoration: BoxDecoration(
                     border: Border.all(
-                        width: 2, color: Theme.of(context).primaryColorLight),
+                      width: 2,
+                      color: Get.theme.focusColor,
+                    ),
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
                     '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Get.theme.primaryColor,
+                    ),
                   ),
                 ),
                 Column(
@@ -37,9 +41,7 @@ class TransactionList extends StatelessWidget {
                       child: Text(
                         transactions[index].title,
                         style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                     Text(
