@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ChartBar extends StatelessWidget {
   final double spendingAmount;
@@ -32,7 +33,7 @@ class ChartBar extends StatelessWidget {
                 heightFactor: spendingPctOfTotal,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Get.theme.primaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),

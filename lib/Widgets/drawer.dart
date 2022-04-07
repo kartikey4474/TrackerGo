@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/theme_controller.dart';
+import 'package:get/get.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({Key? key}) : super(key: key);
@@ -6,11 +8,17 @@ class CustomDrawer extends StatelessWidget {
   var listItems = [
     {
       'title': 'About us',
-      'leading': Icon(Icons.people_alt_outlined, color: Colors.black),
+      'leading': Icon(
+        Icons.people_alt_outlined,
+        // color: Colors.black,
+      ),
     },
     {
       'title': 'Contact us',
-      'leading': Icon(Icons.phone, color: Colors.black),
+      'leading': Icon(
+        Icons.phone,
+        // color: Colors.black,
+      ),
     },
   ];
   //you can add routes and more properties in this list in the future, remember to change the properties
@@ -30,24 +38,55 @@ class CustomDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.pink,
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/SUCCESS (1).png'),
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Text(
-                  'TrackerGo',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            child: Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/SUCCESS (1).png'),
+                    ),
+                  ),
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Text(
+                      'TrackerGo',
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
+          ),
+          GetBuilder<ThemeController>(
+            builder: (controller) {
+              return ListTile(
+                onTap: () {
+                  controller.invertTheme();
+                },
+                leading: Icon(
+                  Icons.dark_mode,
+                ),
+                title: Text(
+                  'Dark theme',
+                  style: TextStyle(
+                    fontSize: 22,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                ),
+                trailing: Switch.adaptive(
+                  value: (controller.themeMode == ThemeMode.dark),
+                  onChanged: (value) {
+                    controller.invertTheme();
+                  },
+                ),
+              );
+            },
           ),
           ...listItems.map((listItem) {
             return ListTile(
@@ -56,13 +95,12 @@ class CustomDrawer extends StatelessWidget {
               title: Text(
                 listItem['title'].toString(),
                 style: TextStyle(
-                  color: Colors.black,
                   fontSize: 22,
                 ),
               ),
               trailing: Icon(
                 Icons.keyboard_arrow_right_rounded,
-                color: Colors.black,
+                // color: Colors.black,,
               ),
             );
           }).toList(),

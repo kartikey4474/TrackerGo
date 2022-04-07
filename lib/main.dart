@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller/theme_controller.dart';
+import 'package:get/get.dart';
 import 'package:flutter_application_1/Widgets/drawer.dart';
 import 'package:flutter_application_1/Widgets/transaction_list.dart';
+import 'package:flutter_application_1/themes.dart';
 import './Widgets/transaction_list.dart';
 import 'Widgets/chart.dart';
 import 'Widgets/new_transactions.dart';
@@ -11,14 +14,16 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Personal expenses',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-        fontFamily: 'Quicksand',
-      ),
-      home: MyHomePage(),
-    );
+    ThemeController themeController = Get.put(ThemeController());
+    return GetBuilder<ThemeController>(builder: (controller) {
+      return GetMaterialApp(
+        title: 'Personal expenses',
+        themeMode: controller.themeMode,
+        darkTheme: MyThemes().darkMode,
+        theme: MyThemes().lightMode,
+        home: MyHomePage(),
+      );
+    });
   }
 }
 
