@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_native_splash: ^2.1.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -30,10 +31,22 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
   get: ^4.6.1
+  
+
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter native splash:
+
+    android: true 
+    ios: true 
+    web: true 
+
+    color: "#ffffff"
+    image: "assets/images/SUCCESS (1).png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
